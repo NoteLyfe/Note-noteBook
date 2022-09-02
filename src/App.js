@@ -5,6 +5,7 @@ import Footer from './Components/Footer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NoteState from './Components/context/NoteState';
+import  Alert  from './Components/Alert';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Router>
           <Navbar />
           <div className="container" style={{marginTop: '60px'}}>
+          <Alert />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
