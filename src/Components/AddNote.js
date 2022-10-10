@@ -13,6 +13,7 @@ const AddNote = () => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
         showAlert('Note Added Successfully', 'success')
+        setNote({ title: "", description: "", tag: "" })
     }
 
     const onChange = (e) => {
@@ -27,17 +28,17 @@ const AddNote = () => {
             <form className='container' style={{ width: "60%" }}>
                 <div className="mb-3">
                     <label htmlFor="text" className="form-label">Title</label>
-                    <input type="text" onChange={onChange} id="title" name='title' className="form-control title" />
+                    <input type="text" onChange={onChange} id="title" name='title' className="form-control title" value={note.title}/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="text" className="form-label">Description</label>
-                    <input type="text" onChange={onChange} name='description' className="form-control description" id="description" />
+                    <input type="text" onChange={onChange} name='description' className="form-control description" id="description" value={note.description}/>
                 </div>
                 <div className="mb-3 ">
                     <label htmlFor="text" className="form-label">Tag</label>
-                    <input type="text" onChange={onChange} name='tag' className="form-control tag" id="tag" />
+                    <input type="text" onChange={onChange} name='tag' className="form-control tag" id="tag" value={note.tag}/>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
+                <button disabled={note.title.length < 5 || note.description.length < 5 || note.tag.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
             </form>
 
             <hr className="container" style={{ width: "80%" }} />
