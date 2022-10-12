@@ -16,7 +16,7 @@ const NoteState = (props) => {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0NDA2M2VkOWEzOWY1OTkwZDA2NGFiIn0sImlhdCI6MTY2NTQwMjUyOH0.IEpmX7uY7nBx0hsRqXrPzfJBSYm6z6JTh9E7QguD6Zs"
+        "auth-token": localStorage.getItem('token')
       },
       body: JSON.stringify({title, description, tag})
     });
@@ -31,7 +31,7 @@ const NoteState = (props) => {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0NDA2M2VkOWEzOWY1OTkwZDA2NGFiIn0sImlhdCI6MTY2NTQwMjUyOH0.IEpmX7uY7nBx0hsRqXrPzfJBSYm6z6JTh9E7QguD6Zs"
+        "auth-token": localStorage.getItem('token')
       }
     });
     const json = await response.json()
@@ -45,7 +45,7 @@ const NoteState = (props) => {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0NDA2M2VkOWEzOWY1OTkwZDA2NGFiIn0sImlhdCI6MTY2NTQwMjUyOH0.IEpmX7uY7nBx0hsRqXrPzfJBSYm6z6JTh9E7QguD6Zs"
+        "auth-token": localStorage.getItem('token')
       }
     });
 
@@ -54,7 +54,7 @@ const NoteState = (props) => {
       return note._id !== id
     })
     setNotes(newNotes)
-    showAlert('Note Deleted Successfully', 'danger')
+    showAlert('Note Deleted Successfully', 'success')
   }
 
   //Edit Note
@@ -64,7 +64,7 @@ const NoteState = (props) => {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0NDA2M2VkOWEzOWY1OTkwZDA2NGFiIn0sImlhdCI6MTY2NTQwMjUyOH0.IEpmX7uY7nBx0hsRqXrPzfJBSYm6z6JTh9E7QguD6Zs"
+        "auth-token": localStorage.getItem('token')
       },
       body: JSON.stringify({title, description, tag})
     }); 
@@ -92,7 +92,7 @@ const NoteState = (props) => {
 
     setTimeout(() => {
       setAlert("")
-    }, 1000);
+    }, 2000);
   }
   const [alert, setAlert] = useState(null)
 
